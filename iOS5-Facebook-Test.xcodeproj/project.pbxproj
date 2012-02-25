@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9AFEE1B414F935D1004C883E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEE1B314F935D1004C883E /* UIKit.framework */; };
+		9AFEE1B614F935D1004C883E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEE1B514F935D1004C883E /* Foundation.framework */; };
+		9AFEE1B814F935D1004C883E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEE1B714F935D1004C883E /* CoreGraphics.framework */; };
+		9AFEE1BE14F935D1004C883E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEE1BC14F935D1004C883E /* InfoPlist.strings */; };
+		9AFEE1C014F935D1004C883E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEE1BF14F935D1004C883E /* main.m */; };
+		9AFEE1C414F935D1004C883E /* SGSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEE1C314F935D1004C883E /* SGSAppDelegate.m */; };
+		9AFEE1C714F935D1004C883E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEE1C514F935D1004C883E /* MainStoryboard.storyboard */; };
+		9AFEE1CA14F935D1004C883E /* SGSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEE1C914F935D1004C883E /* SGSViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9AFEE1AF14F935D1004C883E /* iOS5-Facebook-Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS5-Facebook-Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AFEE1B314F935D1004C883E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9AFEE1B514F935D1004C883E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9AFEE1B714F935D1004C883E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9AFEE1BB14F935D1004C883E /* iOS5-Facebook-Test-Info.plist */ = {isa = PBXFileReference; path = "iOS5-Facebook-Test-Info.plist"; sourceTree = "<group>"; };
+		9AFEE1BD14F935D1004C883E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AFEE1BF14F935D1004C883E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9AFEE1C114F935D1004C883E /* iOS5-Facebook-Test-Prefix.pch */ = {isa = PBXFileReference; path = "iOS5-Facebook-Test-Prefix.pch"; sourceTree = "<group>"; };
+		9AFEE1C214F935D1004C883E /* SGSAppDelegate.h */ = {isa = PBXFileReference; path = SGSAppDelegate.h; sourceTree = "<group>"; };
+		9AFEE1C314F935D1004C883E /* SGSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGSAppDelegate.m; sourceTree = "<group>"; };
+		9AFEE1C614F935D1004C883E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		9AFEE1C814F935D1004C883E /* SGSViewController.h */ = {isa = PBXFileReference; path = SGSViewController.h; sourceTree = "<group>"; };
+		9AFEE1C914F935D1004C883E /* SGSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGSViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9AFEE1AC14F935D1004C883E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AFEE1B414F935D1004C883E /* UIKit.framework in Frameworks */,
+				9AFEE1B614F935D1004C883E /* Foundation.framework in Frameworks */,
+				9AFEE1B814F935D1004C883E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9AFEE1A414F935D1004C883E = {
+			isa = PBXGroup;
+			children = (
+				9AFEE1B914F935D1004C883E /* iOS5-Facebook-Test */,
+				9AFEE1B214F935D1004C883E /* Frameworks */,
+				9AFEE1B014F935D1004C883E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9AFEE1B014F935D1004C883E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AFEE1AF14F935D1004C883E /* iOS5-Facebook-Test.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9AFEE1B214F935D1004C883E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AFEE1B314F935D1004C883E /* UIKit.framework */,
+				9AFEE1B514F935D1004C883E /* Foundation.framework */,
+				9AFEE1B714F935D1004C883E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9AFEE1B914F935D1004C883E /* iOS5-Facebook-Test */ = {
+			isa = PBXGroup;
+			children = (
+				9AFEE1C214F935D1004C883E /* SGSAppDelegate.h */,
+				9AFEE1C314F935D1004C883E /* SGSAppDelegate.m */,
+				9AFEE1C514F935D1004C883E /* MainStoryboard.storyboard */,
+				9AFEE1C814F935D1004C883E /* SGSViewController.h */,
+				9AFEE1C914F935D1004C883E /* SGSViewController.m */,
+				9AFEE1BA14F935D1004C883E /* Supporting Files */,
+			);
+			path = "iOS5-Facebook-Test";
+			sourceTree = "<group>";
+		};
+		9AFEE1BA14F935D1004C883E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9AFEE1BB14F935D1004C883E /* iOS5-Facebook-Test-Info.plist */,
+				9AFEE1BC14F935D1004C883E /* InfoPlist.strings */,
+				9AFEE1BF14F935D1004C883E /* main.m */,
+				9AFEE1C114F935D1004C883E /* iOS5-Facebook-Test-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9AFEE1AE14F935D1004C883E /* iOS5-Facebook-Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AFEE1CD14F935D1004C883E /* Build configuration list for PBXNativeTarget "iOS5-Facebook-Test" */;
+			buildPhases = (
+				9AFEE1AB14F935D1004C883E /* Sources */,
+				9AFEE1AC14F935D1004C883E /* Frameworks */,
+				9AFEE1AD14F935D1004C883E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS5-Facebook-Test";
+			productName = "iOS5-Facebook-Test";
+			productReference = 9AFEE1AF14F935D1004C883E /* iOS5-Facebook-Test.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9AFEE1A614F935D1004C883E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SGS;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "SunGard Global Services";
+			};
+			buildConfigurationList = 9AFEE1A914F935D1004C883E /* Build configuration list for PBXProject "iOS5-Facebook-Test" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9AFEE1A414F935D1004C883E;
+			productRefGroup = 9AFEE1B014F935D1004C883E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9AFEE1AE14F935D1004C883E /* iOS5-Facebook-Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9AFEE1AD14F935D1004C883E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AFEE1BE14F935D1004C883E /* InfoPlist.strings in Resources */,
+				9AFEE1C714F935D1004C883E /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9AFEE1AB14F935D1004C883E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AFEE1C014F935D1004C883E /* main.m in Sources */,
+				9AFEE1C414F935D1004C883E /* SGSAppDelegate.m in Sources */,
+				9AFEE1CA14F935D1004C883E /* SGSViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9AFEE1BC14F935D1004C883E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AFEE1BD14F935D1004C883E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9AFEE1C514F935D1004C883E /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AFEE1C614F935D1004C883E /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9AFEE1CB14F935D1004C883E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9AFEE1CC14F935D1004C883E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9AFEE1CE14F935D1004C883E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS5-Facebook-Test/iOS5-Facebook-Test-Prefix.pch";
+				INFOPLIST_FILE = "iOS5-Facebook-Test/iOS5-Facebook-Test-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9AFEE1CF14F935D1004C883E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS5-Facebook-Test/iOS5-Facebook-Test-Prefix.pch";
+				INFOPLIST_FILE = "iOS5-Facebook-Test/iOS5-Facebook-Test-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9AFEE1A914F935D1004C883E /* Build configuration list for PBXProject "iOS5-Facebook-Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AFEE1CB14F935D1004C883E /* Debug */,
+				9AFEE1CC14F935D1004C883E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AFEE1CD14F935D1004C883E /* Build configuration list for PBXNativeTarget "iOS5-Facebook-Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AFEE1CE14F935D1004C883E /* Debug */,
+				9AFEE1CF14F935D1004C883E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9AFEE1A614F935D1004C883E /* Project object */;
+}
