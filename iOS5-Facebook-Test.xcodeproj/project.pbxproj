@@ -15,6 +15,10 @@
 		9AFEE1C414F935D1004C883E /* SGSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEE1C314F935D1004C883E /* SGSAppDelegate.m */; };
 		9AFEE1C714F935D1004C883E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEE1C514F935D1004C883E /* MainStoryboard.storyboard */; };
 		9AFEE1CA14F935D1004C883E /* SGSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEE1C914F935D1004C883E /* SGSViewController.m */; };
+		9AFEE1DF14F93791004C883E /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEE1D314F93791004C883E /* FBDialog.bundle */; };
+		9AFEE1E014F93791004C883E /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEE1D814F93791004C883E /* libfacebook_ios_sdk.a */; };
+		9AFEE1E314F939BA004C883E /* SGSFaceBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEE1E214F939BA004C883E /* SGSFaceBookController.m */; };
+		9AFEE36F14F9CCB9004C883E /* SGSFBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEE36E14F9CCB9004C883E /* SGSFBFriend.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +26,33 @@
 		9AFEE1B314F935D1004C883E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9AFEE1B514F935D1004C883E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9AFEE1B714F935D1004C883E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9AFEE1BB14F935D1004C883E /* iOS5-Facebook-Test-Info.plist */ = {isa = PBXFileReference; path = "iOS5-Facebook-Test-Info.plist"; sourceTree = "<group>"; };
+		9AFEE1BB14F935D1004C883E /* iOS5-Facebook-Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS5-Facebook-Test-Info.plist"; sourceTree = "<group>"; };
 		9AFEE1BD14F935D1004C883E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9AFEE1BF14F935D1004C883E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9AFEE1C114F935D1004C883E /* iOS5-Facebook-Test-Prefix.pch */ = {isa = PBXFileReference; path = "iOS5-Facebook-Test-Prefix.pch"; sourceTree = "<group>"; };
-		9AFEE1C214F935D1004C883E /* SGSAppDelegate.h */ = {isa = PBXFileReference; path = SGSAppDelegate.h; sourceTree = "<group>"; };
+		9AFEE1C114F935D1004C883E /* iOS5-Facebook-Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS5-Facebook-Test-Prefix.pch"; sourceTree = "<group>"; };
+		9AFEE1C214F935D1004C883E /* SGSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGSAppDelegate.h; sourceTree = "<group>"; };
 		9AFEE1C314F935D1004C883E /* SGSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGSAppDelegate.m; sourceTree = "<group>"; };
 		9AFEE1C614F935D1004C883E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		9AFEE1C814F935D1004C883E /* SGSViewController.h */ = {isa = PBXFileReference; path = SGSViewController.h; sourceTree = "<group>"; };
+		9AFEE1C814F935D1004C883E /* SGSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGSViewController.h; sourceTree = "<group>"; };
 		9AFEE1C914F935D1004C883E /* SGSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGSViewController.m; sourceTree = "<group>"; };
+		9AFEE1D114F93791004C883E /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
+		9AFEE1D214F93791004C883E /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
+		9AFEE1D314F93791004C883E /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
+		9AFEE1D414F93791004C883E /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
+		9AFEE1D514F93791004C883E /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginDialog.h; sourceTree = "<group>"; };
+		9AFEE1D614F93791004C883E /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
+		9AFEE1D714F93791004C883E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		9AFEE1D814F93791004C883E /* libfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfacebook_ios_sdk.a; sourceTree = "<group>"; };
+		9AFEE1D914F93791004C883E /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		9AFEE1DA14F93791004C883E /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		9AFEE1DB14F93791004C883E /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		9AFEE1DC14F93791004C883E /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		9AFEE1DD14F93791004C883E /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		9AFEE1DE14F93791004C883E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		9AFEE1E114F939BA004C883E /* SGSFaceBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSFaceBookController.h; sourceTree = "<group>"; };
+		9AFEE1E214F939BA004C883E /* SGSFaceBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSFaceBookController.m; sourceTree = "<group>"; };
+		9AFEE36D14F9CCB9004C883E /* SGSFBFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSFBFriend.h; sourceTree = "<group>"; };
+		9AFEE36E14F9CCB9004C883E /* SGSFBFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSFBFriend.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +63,7 @@
 				9AFEE1B414F935D1004C883E /* UIKit.framework in Frameworks */,
 				9AFEE1B614F935D1004C883E /* Foundation.framework in Frameworks */,
 				9AFEE1B814F935D1004C883E /* CoreGraphics.framework in Frameworks */,
+				9AFEE1E014F93791004C883E /* libfacebook_ios_sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,12 +100,17 @@
 		9AFEE1B914F935D1004C883E /* iOS5-Facebook-Test */ = {
 			isa = PBXGroup;
 			children = (
+				9AFEE1D014F93791004C883E /* facebook-ios-sdk */,
 				9AFEE1C214F935D1004C883E /* SGSAppDelegate.h */,
 				9AFEE1C314F935D1004C883E /* SGSAppDelegate.m */,
 				9AFEE1C514F935D1004C883E /* MainStoryboard.storyboard */,
 				9AFEE1C814F935D1004C883E /* SGSViewController.h */,
 				9AFEE1C914F935D1004C883E /* SGSViewController.m */,
 				9AFEE1BA14F935D1004C883E /* Supporting Files */,
+				9AFEE1E114F939BA004C883E /* SGSFaceBookController.h */,
+				9AFEE1E214F939BA004C883E /* SGSFaceBookController.m */,
+				9AFEE36D14F9CCB9004C883E /* SGSFBFriend.h */,
+				9AFEE36E14F9CCB9004C883E /* SGSFBFriend.m */,
 			);
 			path = "iOS5-Facebook-Test";
 			sourceTree = "<group>";
@@ -96,6 +124,28 @@
 				9AFEE1C114F935D1004C883E /* iOS5-Facebook-Test-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9AFEE1D014F93791004C883E /* facebook-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				9AFEE1D114F93791004C883E /* Facebook.h */,
+				9AFEE1D214F93791004C883E /* FBConnect.h */,
+				9AFEE1D314F93791004C883E /* FBDialog.bundle */,
+				9AFEE1D414F93791004C883E /* FBDialog.h */,
+				9AFEE1D514F93791004C883E /* FBLoginDialog.h */,
+				9AFEE1D614F93791004C883E /* FBRequest.h */,
+				9AFEE1D714F93791004C883E /* JSON.h */,
+				9AFEE1D814F93791004C883E /* libfacebook_ios_sdk.a */,
+				9AFEE1D914F93791004C883E /* NSObject+SBJSON.h */,
+				9AFEE1DA14F93791004C883E /* NSString+SBJSON.h */,
+				9AFEE1DB14F93791004C883E /* SBJSON.h */,
+				9AFEE1DC14F93791004C883E /* SBJsonBase.h */,
+				9AFEE1DD14F93791004C883E /* SBJsonParser.h */,
+				9AFEE1DE14F93791004C883E /* SBJsonWriter.h */,
+			);
+			name = "facebook-ios-sdk";
+			path = "../../../../../2-Client/2-NOOM/0-Development/facebook-ios-sdk/lib/facebook-ios-sdk";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +202,7 @@
 			files = (
 				9AFEE1BE14F935D1004C883E /* InfoPlist.strings in Resources */,
 				9AFEE1C714F935D1004C883E /* MainStoryboard.storyboard in Resources */,
+				9AFEE1DF14F93791004C883E /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +216,8 @@
 				9AFEE1C014F935D1004C883E /* main.m in Sources */,
 				9AFEE1C414F935D1004C883E /* SGSAppDelegate.m in Sources */,
 				9AFEE1CA14F935D1004C883E /* SGSViewController.m in Sources */,
+				9AFEE1E314F939BA004C883E /* SGSFaceBookController.m in Sources */,
+				9AFEE36F14F9CCB9004C883E /* SGSFBFriend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +294,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS5-Facebook-Test/iOS5-Facebook-Test-Prefix.pch";
 				INFOPLIST_FILE = "iOS5-Facebook-Test/iOS5-Facebook-Test-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../2-Client/2-NOOM/0-Development/facebook-ios-sdk/lib/facebook-ios-sdk\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -252,6 +309,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS5-Facebook-Test/iOS5-Facebook-Test-Prefix.pch";
 				INFOPLIST_FILE = "iOS5-Facebook-Test/iOS5-Facebook-Test-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../2-Client/2-NOOM/0-Development/facebook-ios-sdk/lib/facebook-ios-sdk\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
