@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SGSFaceBookController.h"
+#import "SGSFBFriend.h"
+#import "SGSAppDelegate.h"
 
 @interface SGSViewController : UIViewController
 
+@property (strong, nonatomic) SGSFaceBookController * facebookController;
+@property (strong, nonatomic) IBOutlet UILabel * progressLabel; 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView * spinner;
 @end

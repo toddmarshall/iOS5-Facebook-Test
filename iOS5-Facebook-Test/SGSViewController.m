@@ -8,16 +8,36 @@
 
 #import "SGSViewController.h"
 
+
 @interface SGSViewController ()
 
 @end
 
 @implementation SGSViewController
+@synthesize progressLabel, spinner, facebookController;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	SGSAppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    // we're logged in, get friends
+    [appDelegate.facebookController requestFriendsWithSuccessBlock:^(NSArray *friends) 
+     {
+         NSLog(@"sucessfully retrieved friend list");
+         [friends enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) 
+          {
+              SGSFBFriend * friend = (SGSFBFriend *) obj;
+              NSLog(@"%@", friend);
+          }];
+     } withFailureBlock:^(NSError *error) 
+     {
+         NSLog(@"friend list request failed with error = [%@]", error);
+     } withProgressBlock:^(NSString *progressText, BOOL finished) 
+    {
+        self.progressLabel.text = progressText;
+        if (finished) [self.spinner stopAnimating];
+     }];
 }
 
 - (void)viewDidUnload

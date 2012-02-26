@@ -14,6 +14,7 @@ typedef void (^SGSFBFailureBlock)(NSError * error);
 typedef void (^SGSFBLoginSuccessBlock)(NSString * token);
 typedef void (^SGSFBLogoutSuccessBlock)(void);
 typedef void (^SGSFBFriendRequestSuccessBlock)(NSArray * friends);
+typedef void (^SGSFBFriendRequestProgressBlock)(NSString * progressText, BOOL finished);
 
 @interface SGSFaceBookController : NSObject <FBSessionDelegate, FBRequestDelegate> {
     
@@ -24,6 +25,8 @@ typedef void (^SGSFBFriendRequestSuccessBlock)(NSArray * friends);
     SGSFBLoginSuccessBlock loginSuccessBlock;
     SGSFBLogoutSuccessBlock logoutSuccessBlock;
     SGSFBFriendRequestSuccessBlock friendRequestSuccessBlock;
+    
+    SGSFBFriendRequestProgressBlock friendRequestProgressBlock;
 
 }
 
@@ -32,5 +35,7 @@ typedef void (^SGSFBFriendRequestSuccessBlock)(NSArray * friends);
 - (id) initWithAppId:(NSString *) appId;
 - (void) loginWithSuccessBlock:(SGSFBLoginSuccessBlock) successBlock withFailureBlock:(SGSFBFailureBlock) failureBlock;
 - (void) logoutWithSuccessBlock:(SGSFBLogoutSuccessBlock)successBlock withFailureBlock:(SGSFBFailureBlock) failureBlock;
-- (void) requestFriendsWithSuccessBlock:(SGSFBFriendRequestSuccessBlock) successBlock withFailureBlock:(SGSFBFailureBlock) failureBlock;
+- (void) requestFriendsWithSuccessBlock:(SGSFBFriendRequestSuccessBlock) successBlock 
+                       withFailureBlock:(SGSFBFailureBlock) failureBlock 
+                      withProgressBlock:(SGSFBFriendRequestProgressBlock) progressBlock;
 @end

@@ -53,10 +53,14 @@
     
 }
 
-- (void) requestFriendsWithSuccessBlock:(SGSFBFriendRequestSuccessBlock) successBlock withFailureBlock:(SGSFBFailureBlock) failureBlock {
+- (void) requestFriendsWithSuccessBlock:(SGSFBFriendRequestSuccessBlock) successBlock 
+                       withFailureBlock:(SGSFBFailureBlock) failureBlock 
+                      withProgressBlock:(SGSFBFriendRequestProgressBlock) progressBlock {
     friendRequestSuccessBlock = successBlock;
     friendRequestFailureBlock = failureBlock;
+    friendRequestProgressBlock = progressBlock;
     
+    progressBlock(@"requesting friend list", false);
     [facebook requestWithGraphPath:@"me/friends" andDelegate:self];
     
     
@@ -126,6 +130,7 @@
         data = [result objectForKey:@"data"];
         NSMutableArray * friends = [[NSMutableArray alloc] initWithCapacity:[data count]];
         
+        friendRequestProgressBlock(@"processing friends", false);
         // prepping the friend list could get heavy when there are a lot.  do it on another thread
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
@@ -136,15 +141,22 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 friendRequestSuccessBlock(friends);
+                friendRequestProgressBlock(@"finished", true);
             }); 
         }); 
         
     }
 }
 
+- (void) request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response
+{
+    friendRequestProgressBlock(@"retrieving friends", false);
+}
+
 - (void) request:(FBRequest *)request didFailWithError:(NSError *)error {
     
     friendRequestFailureBlock(error);
+    friendRequestProgressBlock(@"failed", true);
 }
 
 

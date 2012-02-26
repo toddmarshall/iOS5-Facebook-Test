@@ -18,20 +18,6 @@
     [facebookController loginWithSuccessBlock:(SGSFBLoginSuccessBlock)^(NSString *token) 
     {
         NSLog(@"facebook login succeded.  token = [%@]", token);
-        
-        // we're logged in, get friends
-        [facebookController requestFriendsWithSuccessBlock:^(NSArray *friends) 
-        {
-            NSLog(@"sucessfully retrieved friend list");
-            [friends enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) 
-            {
-                SGSFBFriend * friend = (SGSFBFriend *) obj;
-                NSLog(@"%@", friend);
-            }];
-        } withFailureBlock:^(NSError *error) 
-        {
-            NSLog(@"friend list request failed with error = [%@]", error);
-        }];
     } 
     withFailureBlock:(SGSFBFailureBlock)^(NSError *error) 
     {
