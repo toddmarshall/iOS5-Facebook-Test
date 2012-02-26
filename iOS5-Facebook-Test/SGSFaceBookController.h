@@ -10,6 +10,9 @@
 #import <dispatch/dispatch.h>
 #import "FBConnect.h"
 
+#define K_FB_ACCESS_TOKEN @"FBAccessTokenKey"
+#define K_FB_EXPIRATION_DATE @"FBExpirationDateKey"
+
 typedef void (^SGSFBFailureBlock)(NSError * error);
 typedef void (^SGSFBLoginSuccessBlock)(NSString * token);
 typedef void (^SGSFBLogoutSuccessBlock)(void);

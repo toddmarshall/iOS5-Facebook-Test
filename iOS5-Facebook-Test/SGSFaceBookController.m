@@ -30,12 +30,14 @@
     
     // load up the saved authentication token if it's there
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDataKey"]) {
-        facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
-        facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    if ([defaults objectForKey:K_FB_ACCESS_TOKEN] && [defaults objectForKey:K_FB_EXPIRATION_DATE]) {
+        facebook.accessToken = [defaults objectForKey:K_FB_ACCESS_TOKEN];
+        facebook.expirationDate = [defaults objectForKey:K_FB_EXPIRATION_DATE];
     }
     
+    
     if (![facebook isSessionValid]) {
+    
         [facebook authorize:nil];
     }
     else {
@@ -69,8 +71,8 @@
 #pragma mark -- FBSessionDelegate
 - (void) fbDidLogin {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokeyKey"];
-    [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults setObject:[facebook accessToken] forKey:K_FB_ACCESS_TOKEN];
+    [defaults setObject:[facebook expirationDate] forKey:K_FB_EXPIRATION_DATE];
     [defaults synchronize];
     
     
@@ -92,9 +94,9 @@
 - (void) fbDidLogout {
     // Remove saved authorization information if it exists
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"FBAccessTokenKey"]) {
-        [defaults removeObjectForKey:@"FBAccessTokenKey"];
-        [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    if ([defaults objectForKey:K_FB_ACCESS_TOKEN]) {
+        [defaults removeObjectForKey:K_FB_ACCESS_TOKEN];
+        [defaults removeObjectForKey:K_FB_EXPIRATION_DATE];
         [defaults synchronize];
     }
     
@@ -113,8 +115,8 @@
 
 - (void) fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokeyKey"];
-    [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults setObject:[facebook accessToken] forKey:K_FB_ACCESS_TOKEN];
+    [defaults setObject:[facebook expirationDate] forKey:K_FB_EXPIRATION_DATE];
     [defaults synchronize];
     
 }
