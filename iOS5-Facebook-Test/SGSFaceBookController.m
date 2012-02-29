@@ -22,6 +22,10 @@
 }
 
 #pragma mark -- actions
+- (BOOL) hasValidSession {
+    return [facebook isSessionValid];
+}
+
 - (void) loginWithSuccessBlock:(SGSFBLoginSuccessBlock) successBlock withFailureBlock:(SGSFBFailureBlock) failureBlock {
     
     loginSuccessBlock = successBlock;
@@ -41,7 +45,7 @@
         [facebook authorize:nil];
     }
     else {
-        //TODO: what do I do if the session isn't valid?
+        successBlock(facebook.accessToken);
     }
     
     

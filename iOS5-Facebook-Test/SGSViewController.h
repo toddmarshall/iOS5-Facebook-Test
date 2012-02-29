@@ -16,4 +16,6 @@
 @property (strong, nonatomic) SGSFaceBookController * facebookController;
 @property (strong, nonatomic) IBOutlet UILabel * progressLabel; 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView * spinner;
+
+- (IBAction) updateFriendList:(id)sender;
 @end

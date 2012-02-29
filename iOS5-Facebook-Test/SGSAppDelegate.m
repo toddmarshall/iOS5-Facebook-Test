@@ -18,6 +18,7 @@
     [facebookController loginWithSuccessBlock:(SGSFBLoginSuccessBlock)^(NSString *token) 
     {
         NSLog(@"facebook login succeded.  token = [%@]", token);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateFBFriends" object:self];
     } 
     withFailureBlock:(SGSFBFailureBlock)^(NSError *error) 
     {

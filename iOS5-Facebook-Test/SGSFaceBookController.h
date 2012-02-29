@@ -36,6 +36,7 @@ typedef void (^SGSFBFriendRequestProgressBlock)(NSString * progressText, BOOL fi
 @property (nonatomic, strong) Facebook *facebook;
 
 - (id) initWithAppId:(NSString *) appId;
+- (BOOL) hasValidSession;
 - (void) loginWithSuccessBlock:(SGSFBLoginSuccessBlock) successBlock withFailureBlock:(SGSFBFailureBlock) failureBlock;
 - (void) logoutWithSuccessBlock:(SGSFBLogoutSuccessBlock)successBlock withFailureBlock:(SGSFBFailureBlock) failureBlock;
 - (void) requestFriendsWithSuccessBlock:(SGSFBFriendRequestSuccessBlock) successBlock 
