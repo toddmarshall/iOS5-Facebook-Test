@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9ADF34DF1500399000735D2C /* ExternalServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADF34DE1500399000735D2C /* ExternalServiceController.m */; };
+		9ADF34E3150072C400735D2C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9ADF34E1150072C400735D2C /* Model.xcdatamodeld */; };
 		9AFEE1B414F935D1004C883E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEE1B314F935D1004C883E /* UIKit.framework */; };
 		9AFEE1B614F935D1004C883E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEE1B514F935D1004C883E /* Foundation.framework */; };
 		9AFEE1B814F935D1004C883E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEE1B714F935D1004C883E /* CoreGraphics.framework */; };
@@ -22,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9ADF34DD1500399000735D2C /* ExternalServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalServiceController.h; sourceTree = "<group>"; };
+		9ADF34DE1500399000735D2C /* ExternalServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalServiceController.m; sourceTree = "<group>"; };
+		9ADF34E2150072C400735D2C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9AFEE1AF14F935D1004C883E /* iOS5-Facebook-Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS5-Facebook-Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AFEE1B314F935D1004C883E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9AFEE1B514F935D1004C883E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,6 +114,8 @@
 				9AFEE1BA14F935D1004C883E /* Supporting Files */,
 				9AFEE1E114F939BA004C883E /* SGSFaceBookController.h */,
 				9AFEE1E214F939BA004C883E /* SGSFaceBookController.m */,
+				9ADF34DD1500399000735D2C /* ExternalServiceController.h */,
+				9ADF34DE1500399000735D2C /* ExternalServiceController.m */,
 				9AFEE36D14F9CCB9004C883E /* SGSFBFriend.h */,
 				9AFEE36E14F9CCB9004C883E /* SGSFBFriend.m */,
 			);
@@ -122,6 +129,7 @@
 				9AFEE1BC14F935D1004C883E /* InfoPlist.strings */,
 				9AFEE1BF14F935D1004C883E /* main.m */,
 				9AFEE1C114F935D1004C883E /* iOS5-Facebook-Test-Prefix.pch */,
+				9ADF34E1150072C400735D2C /* Model.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -218,6 +226,8 @@
 				9AFEE1CA14F935D1004C883E /* SGSViewController.m in Sources */,
 				9AFEE1E314F939BA004C883E /* SGSFaceBookController.m in Sources */,
 				9AFEE36F14F9CCB9004C883E /* SGSFBFriend.m in Sources */,
+				9ADF34DF1500399000735D2C /* ExternalServiceController.m in Sources */,
+				9ADF34E3150072C400735D2C /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +347,22 @@
 				9AFEE1CF14F935D1004C883E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9ADF34E1150072C400735D2C /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9ADF34E2150072C400735D2C /* Model.xcdatamodel */,
+			);
+			currentVersion = 9ADF34E2150072C400735D2C /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9AFEE1A614F935D1004C883E /* Project object */;
 }

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SGSFaceBookController.h"
-#import "SGSFBFriend.h"
+#import "SGSViewController.h"
+#import "ExternalServiceController.h"
 
 @interface SGSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) SGSFaceBookController * facebookController;
+@property (strong, nonatomic) ExternalServiceController * serviceController;
 
 @end

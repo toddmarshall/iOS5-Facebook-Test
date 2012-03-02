@@ -10,10 +10,22 @@
 
 @implementation SGSAppDelegate
 
-@synthesize window = _window, facebookController;
+@synthesize window = _window, serviceController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    /*
+    // get the main view controller from the story board and register for the notification below
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard"
+                                                             bundle: nil];
+    SGSViewController * controller = (SGSViewController *) [mainStoryboard 
+                                                            instantiateViewControllerWithIdentifier: @"first"];
+    [[NSNotificationCenter defaultCenter] addObserver:controller selector:@selector(updateFriendList:) name:@"UpdateFBFriends" object:nil];
+    NSLog(@"registered for update notification");
+    
+    
+    // initialize our facebook connection
     self.facebookController = [[SGSFaceBookController alloc] initWithAppId:@"161472237304575"];
     [facebookController loginWithSuccessBlock:(SGSFBLoginSuccessBlock)^(NSString *token) 
     {
@@ -24,6 +36,26 @@
     {
         NSLog(@"facebook login failed with error = [%@]", error);
     }];
+     */
+    
+    serviceController = [ExternalServiceController sharedInstance];
+    
+    /*
+    [serviceController 
+     updateFacebookFriendsWithSuccessBlock:^(int total, int added, int removed) 
+     {
+         NSLog(@"facebook friend update successful");
+     } 
+     withProgressBlock:^(NSString *progressText, BOOL finished) 
+     {
+         NSLog(@"%@", progressText);
+     } 
+     withFailureBlock:^(NSError *error) 
+     {
+         NSLog(@"facebook friend update failed with error = [%@]", error);
+     }];
+     */
+    
     return YES;
 }
 
@@ -56,6 +88,7 @@
 
 - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [self.facebookController.facebook handleOpenURL:url];
+    NSLog(@"sourceApplication = %@", sourceApplication);
+    return [self.serviceController.facebookController.facebook handleOpenURL:url];
 }
 @end

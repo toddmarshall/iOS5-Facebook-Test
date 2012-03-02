@@ -10,6 +10,7 @@
 #import "SGSFaceBookController.h"
 #import "SGSFBFriend.h"
 #import "SGSAppDelegate.h"
+#import "ExternalServiceController.h"
 
 @interface SGSViewController : UIViewController
 

@@ -156,13 +156,19 @@
 
 - (void) request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response
 {
-    friendRequestProgressBlock(@"retrieving friends", false);
+    if (friendRequestProgressBlock != nil) {
+        friendRequestProgressBlock(@"retrieving friends", false);
+    }
+    
 }
 
 - (void) request:(FBRequest *)request didFailWithError:(NSError *)error {
     
     friendRequestFailureBlock(error);
-    friendRequestProgressBlock(@"failed", true);
+    if (friendRequestProgressBlock != nil) {
+        friendRequestProgressBlock(@"failed", true);
+    }
+    
 }
 
 

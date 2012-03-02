@@ -19,18 +19,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self updateFriendList:self];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFriendList:) name:@"UpdateFBFriends" object:nil];
-    NSLog(@"registered for update notification");
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -41,7 +41,23 @@
 
 - (IBAction) updateFriendList:(id)sender
 {
-    SGSAppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
+    ExternalServiceController * serviceController = [ExternalServiceController sharedInstance];
+    [serviceController 
+     updateFacebookFriendsWithSuccessBlock:^(int total, int added, int removed) 
+    {
+        NSLog(@"facebook friend update successful");
+    } 
+     withProgressBlock:^(NSString *progressText, BOOL finished) 
+    {
+        self.progressLabel.text = progressText;
+        if (finished) [self.spinner stopAnimating];
+    } 
+     withFailureBlock:^(NSError *error) 
+    {
+        NSLog(@"facebook friend update failed with error = [%@]", error);
+    }];
+    
+     /*
     
     if ([appDelegate.facebookController hasValidSession]) {
         
@@ -63,6 +79,7 @@
              if (finished) [self.spinner stopAnimating];
          }];
     }
+      */
 }
 
 @end
