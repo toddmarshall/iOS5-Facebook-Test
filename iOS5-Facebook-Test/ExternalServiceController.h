@@ -7,21 +7,37 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "SGSFaceBookController.h"
-#import "SGSFBFriend.h"
+#import "FacebookFriend.h"
+#import "Constants.h"
 
 typedef void (^ExternalServiceControllerSuccessBlock)(void);
 typedef void (^ExternalServiceControllerFailureBlock)(NSError * error);
 typedef void (^ExternalServiceControllerUpdateFacebookFriendsSuccess)(int total, int added, int removed);
 typedef void (^ExternalServiceControllerUpdateFacebookFriendsProgress)(NSString * progressText, BOOL finished);
 
-@interface ExternalServiceController : NSObject {
+@interface ExternalServiceController : NSObject <NSFetchedResultsControllerDelegate> {
     ExternalServiceControllerUpdateFacebookFriendsSuccess friendUpdateSuccessBlock;
+    NSMutableDictionary * requestCache;
+    
+    
+    
+    // blocks
+    ExternalServiceControllerUpdateFacebookFriendsSuccess updateFacebookFriendsSuccessBlock;
+    ExternalServiceControllerUpdateFacebookFriendsProgress updateFacebookFriendsProgressBlock;
+    ExternalServiceControllerFailureBlock updateFacebookFriendsFailureBlock;
+    
 }
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) SGSFaceBookController * facebookController;
+@property (nonatomic, strong) NSString * facebookAppID;
+
 
 + (ExternalServiceController *) sharedInstance;
 
+- (void) clearCaches;
 - (void) startFacebookSession:(ExternalServiceControllerSuccessBlock) successBlock withFailureBlock:(ExternalServiceControllerFailureBlock) failureBlock;
 
 - (void) updateFacebookFiends:(id) sender;

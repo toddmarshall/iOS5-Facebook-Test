@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SGSFaceBookController.h"
-#import "SGSFBFriend.h"
+#import "FacebookFriend.h"
 #import "SGSAppDelegate.h"
 #import "ExternalServiceController.h"
 

@@ -45,7 +45,7 @@
     [serviceController 
      updateFacebookFriendsWithSuccessBlock:^(int total, int added, int removed) 
     {
-        NSLog(@"facebook friend update successful");
+        NSLog(@"facebook friend update successful total=[%d] added=[%d] removed=[%d]", total, added, removed);
     } 
      withProgressBlock:^(NSString *progressText, BOOL finished) 
     {

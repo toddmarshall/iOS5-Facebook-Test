@@ -7,8 +7,6 @@
 //
 
 #import "SGSFaceBookController.h"
-#import "SGSFBFriend.h"
-
 
 @implementation SGSFaceBookController
 @synthesize facebook;
@@ -127,30 +125,13 @@
 
 #pragma mark -- FBRequestDelegate
 - (void) request:(FBRequest *)request didLoad:(id)result {
-    
-    
-    
     NSArray * data = nil;
     
     if ([result respondsToSelector:@selector(objectForKey:)]) {
         data = [result objectForKey:@"data"];
-        NSMutableArray * friends = [[NSMutableArray alloc] initWithCapacity:[data count]];
         
-        friendRequestProgressBlock(@"processing friends", false);
-        // prepping the friend list could get heavy when there are a lot.  do it on another thread
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            [data enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                SGSFBFriend * friend = [[SGSFBFriend alloc] initWithFBResultsDictionary:obj];
-                [friends addObject:friend];
-            }];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                friendRequestSuccessBlock(friends);
-                friendRequestProgressBlock(@"finished", true);
-            }); 
-        }); 
-        
+        friendRequestProgressBlock(@"loading friends", false);
+        friendRequestSuccessBlock(data);
     }
 }
 

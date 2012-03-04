@@ -14,47 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    /*
-    // get the main view controller from the story board and register for the notification below
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard"
-                                                             bundle: nil];
-    SGSViewController * controller = (SGSViewController *) [mainStoryboard 
-                                                            instantiateViewControllerWithIdentifier: @"first"];
-    [[NSNotificationCenter defaultCenter] addObserver:controller selector:@selector(updateFriendList:) name:@"UpdateFBFriends" object:nil];
-    NSLog(@"registered for update notification");
-    
-    
-    // initialize our facebook connection
-    self.facebookController = [[SGSFaceBookController alloc] initWithAppId:@"161472237304575"];
-    [facebookController loginWithSuccessBlock:(SGSFBLoginSuccessBlock)^(NSString *token) 
-    {
-        NSLog(@"facebook login succeded.  token = [%@]", token);
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateFBFriends" object:self];
-    } 
-    withFailureBlock:(SGSFBFailureBlock)^(NSError *error) 
-    {
-        NSLog(@"facebook login failed with error = [%@]", error);
-    }];
-     */
-    
     serviceController = [ExternalServiceController sharedInstance];
+    serviceController.managedObjectContext = self.managedObjectContext;
+
     
-    /*
-    [serviceController 
-     updateFacebookFriendsWithSuccessBlock:^(int total, int added, int removed) 
-     {
-         NSLog(@"facebook friend update successful");
-     } 
-     withProgressBlock:^(NSString *progressText, BOOL finished) 
-     {
-         NSLog(@"%@", progressText);
-     } 
-     withFailureBlock:^(NSError *error) 
-     {
-         NSLog(@"facebook friend update failed with error = [%@]", error);
-     }];
-     */
     
     return YES;
 }
@@ -90,5 +53,48 @@
 {
     NSLog(@"sourceApplication = %@", sourceApplication);
     return [self.serviceController.facebookController.facebook handleOpenURL:url];
+}
+
+- (NSManagedObjectContext *) managedObjectContext {
+    if (managedObjectContext != nil) {
+        return managedObjectContext;
+    }
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [managedObjectContext setPersistentStoreCoordinator: coordinator];
+    }
+    
+    return managedObjectContext;
+}
+
+- (NSManagedObjectModel *)managedObjectModel {
+    if (managedObjectModel != nil) {
+        return managedObjectModel;
+    }
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    
+    return managedObjectModel;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    if (persistentStoreCoordinator != nil) {
+        return persistentStoreCoordinator;
+    }
+    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
+                                               stringByAppendingPathComponent: @"iOS5-Facebook-Test.sqlite"]];
+    NSError *error = nil;
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
+                                  initWithManagedObjectModel:[self managedObjectModel]];
+    if(![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                 configuration:nil URL:storeUrl options:nil error:&error]) {
+        /*Error for store creation should be handled in here*/
+    }
+    
+    return persistentStoreCoordinator;
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 @end

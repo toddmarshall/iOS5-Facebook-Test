@@ -10,11 +10,11 @@
 
 @interface ExternalServiceController(Private)
 - (void) didGetFriends:(NSArray *) friends;
-
+- (NSArray *) removeRemoveExistingFriends:(NSArray *) inputArray error:(NSError **)error;
 @end
 
 @implementation ExternalServiceController
-@synthesize facebookController;
+@synthesize facebookController, facebookAppID, managedObjectContext, fetchedResultsController;
 
 
 // Get the shared instance and create it if necessary.
@@ -29,14 +29,29 @@
 
 - (id) init {
     if (self = [super init]) {
-        self.facebookController = [[SGSFaceBookController alloc] initWithAppId:@"161472237304575"];
+        self.facebookAppID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookAppID"];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearCaches) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
     return self;
 }
 
+- (void) clearCaches {
+    
+    updateFacebookFriendsFailureBlock = nil;
+    updateFacebookFriendsProgressBlock = nil;
+    updateFacebookFriendsSuccessBlock = nil;
+    
+}
+
+
 - (void) startFacebookSession:(ExternalServiceControllerSuccessBlock) successBlock withFailureBlock:(ExternalServiceControllerFailureBlock) failureBlock {
     
-    NSLog(@"starting session");
+    if (!self.facebookController) {
+        self.facebookController = [[SGSFaceBookController alloc] initWithAppId:self.facebookAppID];
+    }
+    
+    NSLog(@"starting Facebook session");
         
     [facebookController 
      loginWithSuccessBlock:(SGSFBLoginSuccessBlock)^(NSString *token) {
@@ -59,11 +74,11 @@
                              withProgressBlock:(ExternalServiceControllerUpdateFacebookFriendsProgress) progressBlock 
                               withFailureBlock:(ExternalServiceControllerFailureBlock) failureBlock 
 {
+    updateFacebookFriendsSuccessBlock = successBlock;
+    updateFacebookFriendsProgressBlock = progressBlock;
+    updateFacebookFriendsFailureBlock = failureBlock;
+    
     ExternalServiceControllerSuccessBlock callWhenAuthenticated = ^(void) {
-        
-        if (![self.facebookController hasValidSession]) {
-            NSLog(@"no session");
-        }
         
         [self.facebookController requestFriendsWithSuccessBlock:^(NSArray *friends) 
          {
@@ -74,6 +89,8 @@
          } withFailureBlock:^(NSError *error) 
          {
              NSLog(@"friend list request failed with error = [%@]", error);
+             failureBlock(error);
+             
          } withProgressBlock:progressBlock];
     };
     
@@ -92,14 +109,58 @@
     
        
 }
+- (NSArray *) removeRemoveExistingFriends:(NSArray *)inputArray error:(NSError **) error {
+    
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"FacebookFriend" inManagedObjectContext:self.managedObjectContext];
+    NSMutableArray * newFriends = [[NSMutableArray alloc] initWithCapacity:[inputArray count]];
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    [inputArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"(facebookId = %@)",  [obj objectForKey:@"id"]];
+        [request setPredicate:pred];
+        NSUInteger count = [managedObjectContext countForFetchRequest:request error:error];
+        
+        if (count == 0) {
+            [newFriends addObject:obj];
+        }
+        else
+            NSLog(@"filtered out [%@]", [obj objectForKey:@"name"]);
+         
+    }];
+    
+    return newFriends;
+}
+     
 
-- (void) didGetFriends:(NSArray *) friends
+- (void) didGetFriends:(NSArray *) rawFriends
 {
-    [friends enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) 
+    NSError * error = nil;
+    
+    updateFacebookFriendsProgressBlock(@"finding new friends", false);
+    
+    NSArray * newFriends = [self removeRemoveExistingFriends:rawFriends error:&error];
+    if (error) updateFacebookFriendsFailureBlock(error);
+    
+    
+    [newFriends enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) 
      {
-         SGSFBFriend * friend = (SGSFBFriend *) obj;
-         NSLog(@"%@", friend);
+         NSEntityDescription * entityDesc = [NSEntityDescription entityForName:@"FacebookFriend" inManagedObjectContext:self.managedObjectContext];
+         FacebookFriend * friend = [[FacebookFriend alloc] initWithEntity:entityDesc insertIntoManagedObjectContext:self.managedObjectContext];
+         friend.facebookId = [obj objectForKey:@"id"];
+         friend.name = [obj objectForKey:@"name"];
+         
+         NSLog(@"added %@", friend);
      }];
+    
+    updateFacebookFriendsProgressBlock(@"saving friends", false);
+    [self.managedObjectContext save:&error];
+    if (error) updateFacebookFriendsFailureBlock(error);
+    
+    
+    updateFacebookFriendsProgressBlock(@"finished updating friends", true);
+    updateFacebookFriendsSuccessBlock([rawFriends count], [newFriends count], 0);
 }
 
 @end

@@ -7,12 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 #import "SGSViewController.h"
 #import "ExternalServiceController.h"
 
-@interface SGSAppDelegate : UIResponder <UIApplicationDelegate>
+@interface SGSAppDelegate : UIResponder <UIApplicationDelegate> {
+    
+    NSManagedObjectModel *managedObjectModel;
+    NSManagedObjectContext *managedObjectContext;
+    NSPersistentStoreCoordinator *persistentStoreCoordinator;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) ExternalServiceController * serviceController;
+@property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+- (NSString *)applicationDocumentsDirectory;
 @end
