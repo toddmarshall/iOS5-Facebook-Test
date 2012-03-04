@@ -22,6 +22,7 @@
 		E51DFD4C1502EB80009E8845 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E51DFD4A1502EB80009E8845 /* Model.xcdatamodeld */; };
 		E51DFD4E1502ED98009E8845 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DFD4D1502ED98009E8845 /* CoreData.framework */; };
 		E51DFD581502F967009E8845 /* FacebookFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = E51DFD571502F967009E8845 /* FacebookFriend.m */; };
+		E51DFD5F1503EDAE009E8845 /* BackgroundDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E51DFD5E1503EDAE009E8845 /* BackgroundDataLoader.m */; };
 		E52248FC1502B5BC000E366D /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = E52248FB1502B5BC000E366D /* Constants.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		E51DFD4D1502ED98009E8845 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E51DFD561502F967009E8845 /* FacebookFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriend.h; sourceTree = "<group>"; };
 		E51DFD571502F967009E8845 /* FacebookFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriend.m; sourceTree = "<group>"; };
+		E51DFD5D1503EDAE009E8845 /* BackgroundDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundDataLoader.h; sourceTree = "<group>"; };
+		E51DFD5E1503EDAE009E8845 /* BackgroundDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundDataLoader.m; sourceTree = "<group>"; };
 		E52248FA1502B5BC000E366D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E52248FB1502B5BC000E366D /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +122,8 @@
 				E51DFD4F1502F85D009E8845 /* Model */,
 				9AFEE1C214F935D1004C883E /* SGSAppDelegate.h */,
 				9AFEE1C314F935D1004C883E /* SGSAppDelegate.m */,
+				E51DFD5D1503EDAE009E8845 /* BackgroundDataLoader.h */,
+				E51DFD5E1503EDAE009E8845 /* BackgroundDataLoader.m */,
 				9AFEE1C514F935D1004C883E /* MainStoryboard.storyboard */,
 				9AFEE1C814F935D1004C883E /* SGSViewController.h */,
 				9AFEE1C914F935D1004C883E /* SGSViewController.m */,
@@ -248,6 +253,7 @@
 				E52248FC1502B5BC000E366D /* Constants.m in Sources */,
 				E51DFD4C1502EB80009E8845 /* Model.xcdatamodeld in Sources */,
 				E51DFD581502F967009E8845 /* FacebookFriend.m in Sources */,
+				E51DFD5F1503EDAE009E8845 /* BackgroundDataLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

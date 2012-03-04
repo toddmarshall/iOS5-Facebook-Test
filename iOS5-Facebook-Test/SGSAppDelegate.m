@@ -55,16 +55,14 @@
     return [self.serviceController.facebookController.facebook handleOpenURL:url];
 }
 
+#pragma mark - core data stack setup
+
 - (NSManagedObjectContext *) managedObjectContext {
-    if (managedObjectContext != nil) {
-        return managedObjectContext;
-    }
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [managedObjectContext setPersistentStoreCoordinator: coordinator];
-    }
     
+    if (managedObjectContext == nil) {
+        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [managedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+    }
     return managedObjectContext;
 }
 
@@ -77,7 +75,28 @@
     return managedObjectModel;
 }
 
+- (NSString *)persistentStorePath {
+    if (persistentStorePath == nil) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths lastObject];
+        persistentStorePath = [documentsDirectory stringByAppendingPathComponent:@"iOS5-Facebook-Test.sqlite"];
+    }
+    return persistentStorePath;
+}
+
+
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    if (persistentStoreCoordinator == nil) {
+        NSURL *storeUrl = [NSURL fileURLWithPath:self.persistentStorePath];
+        persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[NSManagedObjectModel mergedModelFromBundles:nil]];
+        NSError *error = nil;
+        NSPersistentStore *persistentStore = [persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error];
+        NSAssert3(persistentStore != nil, @"Unhandled error adding persistent store in %s at line %d: %@", __FUNCTION__, __LINE__, [error localizedDescription]);
+    }
+    return persistentStoreCoordinator;
+    
+    
+    /*
     if (persistentStoreCoordinator != nil) {
         return persistentStoreCoordinator;
     }
@@ -88,12 +107,13 @@
                                   initWithManagedObjectModel:[self managedObjectModel]];
     if(![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
-        /*Error for store creation should be handled in here*/
     }
     
     return persistentStoreCoordinator;
+    */
 }
 
+#pragma mark - necessary for external callbacks from facebook app and safari
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
