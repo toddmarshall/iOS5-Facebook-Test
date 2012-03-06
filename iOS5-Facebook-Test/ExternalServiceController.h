@@ -11,6 +11,7 @@
 #import "SGSFaceBookController.h"
 #import "FacebookFriend.h"
 #import "Constants.h"
+#import "SGSStopWatch.h"
 
 typedef void (^ExternalServiceControllerSuccessBlock)(void);
 typedef void (^ExternalServiceControllerFailureBlock)(NSError * error);
@@ -21,16 +22,15 @@ typedef void (^ExternalServiceControllerUpdateFacebookFriendsProgress)(NSString 
     ExternalServiceControllerUpdateFacebookFriendsSuccess friendUpdateSuccessBlock;
     NSMutableDictionary * requestCache;
     
-    
-    
     // blocks
     ExternalServiceControllerUpdateFacebookFriendsSuccess updateFacebookFriendsSuccessBlock;
     ExternalServiceControllerUpdateFacebookFriendsProgress updateFacebookFriendsProgressBlock;
     ExternalServiceControllerFailureBlock updateFacebookFriendsFailureBlock;
     
 }
-@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) SGSStopWatch * stopWatch;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) SGSFaceBookController * facebookController;
 @property (nonatomic, strong) NSString * facebookAppID;
 

@@ -14,7 +14,7 @@
 @end
 
 @implementation ExternalServiceController
-@synthesize facebookController, facebookAppID, managedObjectContext, fetchedResultsController;
+@synthesize facebookController, facebookAppID, managedObjectContext, fetchedResultsController, stopWatch;
 
 
 // Get the shared instance and create it if necessary.
@@ -32,6 +32,8 @@
         self.facebookAppID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookAppID"];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearCaches) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+        
+        self.stopWatch = [[SGSStopWatch alloc] init];
     }
     return self;
 }
@@ -47,6 +49,7 @@
 
 - (void) startFacebookSession:(ExternalServiceControllerSuccessBlock) successBlock withFailureBlock:(ExternalServiceControllerFailureBlock) failureBlock {
     
+    [stopWatch startTimerWithName:@"startFacebookSession"];
     if (!self.facebookController) {
         self.facebookController = [[SGSFaceBookController alloc] initWithAppId:self.facebookAppID];
     }
@@ -56,10 +59,12 @@
     [facebookController 
      loginWithSuccessBlock:(SGSFBLoginSuccessBlock)^(NSString *token) {
          NSLog(@"facebook login succeded.  token = [%@]", token);
+         [stopWatch stopTimerWithName:@"startFacebookSession"];
          successBlock();
      } 
      withFailureBlock:(SGSFBFailureBlock)^(NSError *_error) {
          NSLog(@"facebook login failed with error = [%@]", _error);
+         [stopWatch stopTimerWithName:@"startFacebookSession"];
          failureBlock(_error);
      }];
     
@@ -80,15 +85,18 @@
     
     ExternalServiceControllerSuccessBlock callWhenAuthenticated = ^(void) {
         
+        [stopWatch startTimerWithName:@"requestFriends"];
         [self.facebookController requestFriendsWithSuccessBlock:^(NSArray *friends) 
          {
              NSLog(@"sucessfully retrieved friend list");
+             [stopWatch stopTimerWithName:@"requestFriends"];
              [self didGetFriends:friends];
              
              
          } withFailureBlock:^(NSError *error) 
          {
              NSLog(@"friend list request failed with error = [%@]", error);
+             [stopWatch stopTimerWithName:@"requestFriends"];
              failureBlock(error);
              
          } withProgressBlock:progressBlock];
@@ -107,9 +115,10 @@
         callWhenAuthenticated();
     }
     
-       
 }
 - (NSArray *) removeRemoveExistingFriends:(NSArray *)inputArray error:(NSError **) error {
+    
+    [stopWatch startTimerWithName:@"filterFriends"];
     
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"FacebookFriend" inManagedObjectContext:self.managedObjectContext];
     NSMutableArray * newFriends = [[NSMutableArray alloc] initWithCapacity:[inputArray count]];
@@ -130,6 +139,8 @@
          
     }];
     
+    [stopWatch stopTimerWithName:@"filterFriends"];
+    
     return newFriends;
 }
      
@@ -144,6 +155,7 @@
     if (error) updateFacebookFriendsFailureBlock(error);
     
     
+    [stopWatch startTimerWithName:@"savingNewFriends"];
     [newFriends enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) 
      {
          NSEntityDescription * entityDesc = [NSEntityDescription entityForName:@"FacebookFriend" inManagedObjectContext:self.managedObjectContext];
@@ -156,11 +168,14 @@
     
     updateFacebookFriendsProgressBlock(@"saving friends", false);
     [self.managedObjectContext save:&error];
+    [stopWatch stopTimerWithName:@"savingNewFriends"];
     if (error) updateFacebookFriendsFailureBlock(error);
     
     
     updateFacebookFriendsProgressBlock(@"finished updating friends", true);
     updateFacebookFriendsSuccessBlock([rawFriends count], [newFriends count], 0);
+    
+    NSLog(@"%@", stopWatch);
 }
 
 @end
